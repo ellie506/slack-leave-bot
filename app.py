@@ -153,7 +153,7 @@ def update_leave_balance(user_id, leave_type, days, operation='subtract'):
 
 # Slack command handlers
 
-@app.command("/leave")
+@app.command("/leave_request")
 def handle_leave_command(ack, command, client):
     """Handle the /leave slash command"""
     ack()
