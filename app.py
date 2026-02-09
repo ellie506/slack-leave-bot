@@ -35,7 +35,8 @@ app = App(
 )
 
 # Initialize Flask
-flask_app = Flask(__name__)print("FLASK APP CREATED", flush=True)
+flask_app = Flask(__name__)
+print("FLASK APP CREATED", flush=True)
 handler = SlackRequestHandler(app)
 
 # Database setup
