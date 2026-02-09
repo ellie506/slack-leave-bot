@@ -14,6 +14,11 @@ from slack_bolt.adapter.flask import SlackRequestHandler
 import sqlite3
 from dotenv import load_dotenv
 
+# Test if Flask works at all
+print("=" * 50, flush=True)
+print("APP.PY IS LOADING", flush=True)
+print("=" * 50, flush=True)
+
 # Load environment variables
 load_dotenv()
 
@@ -30,13 +35,13 @@ app = App(
 )
 
 # Initialize Flask
-flask_app = Flask(__name__)
+flask_app = Flask(__name__)print("FLASK APP CREATED", flush=True)
 handler = SlackRequestHandler(app)
 
 # Database setup
 DB_PATH = "leave_records.db"
 
-def init_db():
+def init_db():print("DATABASE INITIALIZED", flush=True)
     """Initialize the database with required tables"""
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
