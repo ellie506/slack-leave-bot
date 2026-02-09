@@ -547,5 +547,11 @@ def health_check():
     return jsonify({"status": "healthy"}), 200
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 3000))
-    flask_app.run(host="0.0.0.0", port=port, debug=False)
+    try:
+        port = int(os.environ.get("PORT", 3000))
+        print(f"Starting app on port {port}", flush=True)
+        flask_app.run(host="0.0.0.0", port=port, debug=False)
+    except Exception as e:
+        print(f"ERROR: {e}", flush=True)
+        import traceback
+        traceback.print_exc()
