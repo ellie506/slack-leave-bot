@@ -18,9 +18,15 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Initialize Slack app
+import sys
+bot_token = os.environ.get("SLACK_BOT_TOKEN")
+signing_secret = os.environ.get("SLACK_SIGNING_SECRET")
+print(f"Bot token exists: {bot_token is not None and bot_token.startswith('xoxb')}", file=sys.stderr, flush=True)
+print(f"Signing secret exists: {signing_secret is not None and len(signing_secret) > 0}", file=sys.stderr, flush=True)
+
 app = App(
-    token=os.environ.get("SLACK_BOT_TOKEN"),
-    signing_secret=os.environ.get("SLACK_SIGNING_SECRET")
+    token=bot_token,
+    signing_secret=signing_secret
 )
 
 # Initialize Flask
