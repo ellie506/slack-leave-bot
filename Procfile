@@ -1,1 +1,1 @@
-web: gunicorn app:flask_app --bind 0.0.0.0:$PORT --timeout 120 --workers 1 --threads 2 --log-level debug
+web: gunicorn app:flask_app --bind 0.0.0.0:$PORT --access-logfile - --error-logfile -
