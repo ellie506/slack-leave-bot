@@ -542,15 +542,14 @@ def handle_report_command(ack, command, client):
     )
 
 # Flask routes
-@flask_app.route("/slack/events", methods=["POST"])
-def slack_events():
-    """Handle Slack events"""
-    return handler.handle(request)
-
-@flask_app.route("/health", methods=["GET"])
-def health_check():
-    """Health check endpoint"""
-    return jsonify({"status": "healthy"}), 200
+@flask_app.route("/test", methods=["GET", "POST"])
+def test():
+    """Test endpoint"""
+    return jsonify({
+        "status": "working",
+        "has_bot_token": os.environ.get("SLACK_BOT_TOKEN") is not None,
+        "has_signing_secret": os.environ.get("SLACK_SIGNING_SECRET") is not None
+    }), 200
 
 if __name__ == "__main__":
     try:
